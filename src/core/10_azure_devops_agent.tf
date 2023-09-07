@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "azdo_rg" {
 }
 
 module "azdoa_snet" {
-  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
   name                                          = format("%s-azdoa-snet", local.project)
   address_prefixes                              = var.cidr_azdoa_subnet
   resource_group_name                           = azurerm_resource_group.rg_vnet.name
@@ -16,7 +16,7 @@ module "azdoa_snet" {
 }
 
 module "azdoa_li" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//azure_devops_agent?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//azure_devops_agent?ref=v7.4.1"
   name                = format("%s-azdoa-vmss-li", local.project)
   resource_group_name = azurerm_resource_group.azdo_rg.name
   subnet_id           = module.azdoa_snet.id

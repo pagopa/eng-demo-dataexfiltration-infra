@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "rg_vnet" {
 
 # vnet
 module "vnet_ft" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v7.4.1"
   name                = format("%s-frontend-vnet", local.project)
   location            = azurerm_resource_group.rg_vnet.location
   resource_group_name = azurerm_resource_group.rg_vnet.name
@@ -17,7 +17,7 @@ module "vnet_ft" {
 }
 
 module "vnet_app" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v7.4.1"
   name                = format("%s-application-vnet", local.project)
   location            = azurerm_resource_group.rg_vnet.location
   resource_group_name = azurerm_resource_group.rg_vnet.name
@@ -27,7 +27,7 @@ module "vnet_app" {
 }
 
 module "vnet_data" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v7.4.1"
   name                = format("%s-data-vnet", local.project)
   location            = azurerm_resource_group.rg_vnet.location
   resource_group_name = azurerm_resource_group.rg_vnet.name
@@ -37,7 +37,7 @@ module "vnet_data" {
 }
 
 module "vnet_hub" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v7.4.1"
   name                = format("%s-hub-vnet", local.project)
   location            = azurerm_resource_group.rg_vnet.location
   resource_group_name = azurerm_resource_group.rg_vnet.name
@@ -47,7 +47,7 @@ module "vnet_hub" {
 }
 
 module "firewall_snet" {
-  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
   name                                          = "AzureFirewallSubnet"
   address_prefixes                              = var.cidr_firewall_subnet
   resource_group_name                           = module.vnet_hub.resource_group_name
@@ -57,7 +57,7 @@ module "firewall_snet" {
 }
 
 module "firewall_mng_snet" {
-  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
   name                                          = "AzureFirewallManagementSubnet"
   address_prefixes                              = var.cidr_firewall_mng_subnet
   resource_group_name                           = module.vnet_hub.resource_group_name
@@ -67,7 +67,7 @@ module "firewall_mng_snet" {
 }
 
 module "vnet_hub_ft_peering" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v7.4.1"
 
   location = azurerm_resource_group.rg_vnet.location
 
@@ -92,7 +92,7 @@ module "vnet_hub_ft_peering" {
 }
 
 module "vnet_hub_app_peering" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v7.4.1"
 
   location = azurerm_resource_group.rg_vnet.location
 
@@ -117,7 +117,7 @@ module "vnet_hub_app_peering" {
 }
 
 module "vnet_hub_data_peering" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network_peering?ref=v7.4.1"
 
   location = azurerm_resource_group.rg_vnet.location
 

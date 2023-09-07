@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "rg_vnet" {
 }
 
 module "vnet" {
-  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v6.2.2"
+  source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v7.4.1"
   name                = format("%s-vnet", local.project)
   location            = azurerm_resource_group.rg_vnet.location
   resource_group_name = azurerm_resource_group.rg_vnet.name
@@ -16,7 +16,7 @@ module "vnet" {
 }
 
 module "private_endpoint_snet" {
-  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
   name                                          = format("%s-private-endpoint-snet", local.project)
   address_prefixes                              = var.cidr_private_endpoint_subnet
   resource_group_name                           = azurerm_resource_group.rg_vnet.name
@@ -103,7 +103,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "privatelink_keyvault_a
 }
 
 module "route_table_aks" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//route_table?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//route_table?ref=v7.4.1"
 
   name                          = format("%s-all2firewall-rt", local.project)
   location                      = azurerm_resource_group.rg_vnet.location

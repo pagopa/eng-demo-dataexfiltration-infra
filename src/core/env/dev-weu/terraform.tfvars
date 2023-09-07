@@ -27,7 +27,7 @@ dns_zone_internal_prefix = "internal.dev.dex"
 # Network
 #
 
-cidr_vnet                = ["10.1.0.0/16"]
+cidr_vnet = ["10.1.0.0/16"]
 
 cidr_appgateway_subnet       = ["10.1.130.0/24"]
 cidr_apim_subnet             = ["10.1.131.0/24"]

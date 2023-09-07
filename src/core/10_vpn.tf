@@ -1,6 +1,6 @@
 # ## VPN subnet
 module "vpn_snet" {
-  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source                                        = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
   name                                          = "GatewaySubnet"
   address_prefixes                              = var.cidr_vpn_subnet
   resource_group_name                           = azurerm_resource_group.rg_vnet.name
@@ -15,7 +15,7 @@ data "azuread_application" "vpn_app" {
 }
 
 module "vpn" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//vpn_gateway?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//vpn_gateway?ref=v7.4.1"
 
   name                = format("%s-vpn", local.project)
   location            = var.location
@@ -43,7 +43,7 @@ module "vpn" {
 
 ## DNS Forwarder
 module "dns_forwarder_snet" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v7.4.1"
 
   name                                          = format("%s-dns-forwarder-snet", local.project)
   address_prefixes                              = var.cidr_dns_forwarder_subnet
@@ -62,7 +62,7 @@ module "dns_forwarder_snet" {
 }
 
 module "dns_forwarder" {
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//dns_forwarder?ref=v6.2.2"
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//dns_forwarder?ref=v7.4.1"
 
   name                = format("%s-dns-forwarder", local.project)
   location            = azurerm_resource_group.rg_vnet.location
